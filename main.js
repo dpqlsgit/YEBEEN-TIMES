@@ -28,7 +28,8 @@ const getNewsByCategory = async (event) => {
   //ui상에서는 앞글자 대문자를 유지하고 보내주는 파라미터 값은 소문자로 변경
   const category = event.target.textContent.toLowerCase();
   //바뀔일 없는 API_KEY는 가장 뒤에 배치 - 쿼리 정렬 규칙 같은 것
-  const url = new URL(`http://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=${API_KEY}`)
+  // const url = new URL(`http://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=${API_KEY}`)
+  const url = new URL(`https://yebeen-times.netlify.app/top-headlines?country=kr&category=${category}&apiKey=${API_KEY}`)
   const response = await fetch(url);
   const data = await response.json();
   //render()함수 호출 전에 newsList 변수값을 변경해주어야 한다
@@ -71,7 +72,8 @@ getLatestNews();
 
 const getNewsByKeyWord = async() => {
   let keyWord = document.getElementById('search-input').value
-  const url = new URL(`http://newsapi.org/v2/top-headlines?country=us&q=${keyWord}&apiKey=${API_KEY}`)
+  // const url = new URL(`http://newsapi.org/v2/top-headlines?country=us&q=${keyWord}&apiKey=${API_KEY}`)
+  const url = new URL(`https://yebeen-times.netlify.app/top-headlines?country=us&q=${keyWord}&apiKey=${API_KEY}`)
   const response = await fetch(url)
   const data = await response.json();
   newsList = data.articles;
